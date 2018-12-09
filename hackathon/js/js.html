@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<?php 
+	print_r($arrayMesDados);
+?>
+<canvas id="myChart"></canvas>
+
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- ChartJS org import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+<script type="text/javascript">
+	var ctx = document.getElementById("myChart").getContext("2d");
+	var chart = new Chart(ctx, {
+    	// The type of chart we want to create
+	    type: "bar",
+
+	    // The data for our dataset
+	    data: {
+	        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "Setember", "October", "November", "December"],
+	        datasets: [
+	        	{
+		            label: ["Lucro"],
+		            backgroundColor: "rgb(255, 99, 132)",
+		            borderColor: "rgb(255, 99, 132)",
+		            data: [32, 10, 5, 2, 20, 30, 45, 2, 20, 30, 45,33],
+	        	},
+	        	{
+		            label: ["Despesa"],
+		            backgroundColor: "rgb(143, 31, 32)",
+		            borderColor: "rgb(255, 99, 132)",
+		            data: [31, 10, 5, 2, 20, 30, 45, 2, 20, 30, 45,33],
+	        	},
+	        ]
+	    },
+
+	    // Configuration options go here
+	    options: {}
+	});
+</script>
+
+</body>
+</html>

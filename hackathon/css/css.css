@@ -7,4 +7,9 @@
 .button-txt 
 {
     font-size: 2em;
+    color: white;
+}
+
+a:hover { 
+    color: white;
 }

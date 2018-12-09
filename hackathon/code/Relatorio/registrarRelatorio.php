@@ -20,10 +20,10 @@
 
     <div class="container">
           <?php
- $con=mysqli_connect("localhost","root","usbw","hackathon_apae");
+          $con=mysqli_connect("localhost","root","","hackathon_apae");
 
- // Check connection
-if (mysqli_connect_errno())
+          // Check connection
+          if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   } else {
@@ -80,13 +80,13 @@ if (mysqli_connect_errno())
       <div class="row">
         <div class="col-md-6 text-center">
           <button type="button" class="btn btn-secondary btn-lg btn-block btn btn-info button-relatorio">
-            <a class="button-txt" href="../Relatorio/inserirRelatorio.html">Inserir novo Relatório</a>
+            <a class="button-txt" href="inserirRelatorio.html">Inserir novo Relatório</a>
           </button>
         </div>
       
         <div class="col-md-6 text-center">
           <button type="button" class="btn btn-secondary btn-lg btn-block btn btn-info button-relatorio">
-           <a class="button-txt" href="visualizarRelatorio.html">Visualizar Relatório</span>
+           <a class="button-txt" href="visualizarRelatorio.php">Visualizar Relatório</span>
           </button>
         </div>
       </div>

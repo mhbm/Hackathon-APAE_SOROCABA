@@ -64,7 +64,9 @@
                           echo '<option value="evento">Evento</option>';
                           echo '<option value="todos" selected="selected">Todos</option>';
                        } else {
-                        echo '<option value="saude">Saúde</option>';
+
+                          echo '<option value=""></option>';
+                          echo '<option value="saude">Saúde</option>';
                           echo '<option value="assistencia">Assistência</option>';
                           echo '<option value="educacao">Educação</option>';
                           echo '<option value="evento">Evento</option>';
@@ -113,6 +115,8 @@
                         break;
                     }
 
+                    
+
                     $arrayMesDados = [];
 
                     for ($i=1; $i < 13 ; $i++) { 
@@ -130,7 +134,7 @@
                     }
 
 
-                  //    print_r($arrayMesDados);
+                    
               }
             }
     

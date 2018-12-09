@@ -113,20 +113,21 @@
                         break;
                     }
 
-
-                    if ($_POST["tipoSetor"] == 'todos') {
-                        $query = "SELECT truncate(sum(valor),2) as total FROM gasto where data BETWEEN '2018-01-01' and '2018-01-31' ";
-                    } else {
-                        $query = "SELECT truncate(sum(valor),2) as total FROM gasto where data BETWEEN '2018-01-01' and '2018-01-31' and idSetor  = $tipoSetor ";
-                    }
-
-                    $result = $con->query($query);
                     $arrayMesDados = [];
-                    while($dados = $result ->fetch_assoc() ) {
-                          //print_r(utf8_encode($dados["total"]));
-                          $arrayMesDados[] = $dados["total"];
-                    }
 
+                    for ($i=1; $i < 13 ; $i++) { 
+                      # code...
+                        if ($_POST["tipoSetor"] == 'todos') {
+                            $query = "SELECT truncate(sum(valor),2) as total FROM gasto where data BETWEEN '2018-0". $i."-01' and '2018-0".$i."-31' ";
+                        } else {
+                            $query = "SELECT truncate(sum(valor),2) as total FROM gasto where data BETWEEN '2018-0". $i."-01' and '2018-0".$i."-31' and idSetor  = $tipoSetor ";
+                        }
+                        $result = $con->query($query);
+                        while($dados = $result ->fetch_assoc() ) {
+                              //print_r(utf8_encode($dados["total"]));
+                              $arrayMesDados[] = $dados["total"];
+                        }
+                    }
                     print_r($arrayMesDados);
               }
             }

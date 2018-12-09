@@ -12,17 +12,17 @@
 
   <body class="text-center">
       <div class="mx-auto " style="width:240px">
-        <div class="w-25 ">
-            <form class="form-signin">
-      </div>
-              <img class="mb-4" src="file:///c:/xampp/htdocs/pasta/Hackathon-APAE_SOROCABA/hackathon/img/download.png" alt="" width="240" height="120s">
+        
+            <form class="form-signin" action="checkLogin.php" method="POST">
+      
+              <img class="mb-4" src="img/download.png" alt="" width="240" height="120s" />
               <h1 class="h3 mb-3 font-weight-normal">Login</h1>
               
               <label for="inputEmail" class="sr-only">CPF</label>
-              <input type="email" id="inputEmail" class="form-control" placeholder="CPF" required="" autofocus="">
+              <input type="text" maxlength="11" id="inputEmail" class="form-control" name="inputEmail" placeholder="CPF" required="required" autofocus="" />
               <p></p>
-              <label for="inputPassword" class="sr-only">Senha</label>
-              <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
+              <label for="inputPassword"  class="sr-only">Senha</label>
+              <input type="password" name ="inputPassword" id="inputPassword" class="form-control" placeholder="Senha" required="required" />
               <p></p>
               <button class="btn btn-lg btn-info btn-primary" type="submit">Logar</button>
               <p class="mt-5 mb-3 text-muted">© 2018</p>
@@ -34,6 +34,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var myParam = location.search.split('check=')[1];
+        if (myParam != null) {
+          alert("Usuário não cadastrado no sistema");
+        }
+    </script>
   </body>
 
 </html>

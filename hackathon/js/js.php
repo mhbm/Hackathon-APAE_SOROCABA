@@ -1,8 +1,5 @@
 
-<?php 
-//	print_r($arrayMesDados);
 
-?>
 <div class="col-md-8">
 <canvas id="myChart"></canvas>
 </div>

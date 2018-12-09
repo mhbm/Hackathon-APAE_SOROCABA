@@ -7,19 +7,19 @@ $(document).ready(function() {
 
 	    // The data for our dataset
 	    data: {
-	        labels: ["January", "February", "March", "April", "May", "June", "July"],
+	        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "Setember", "October", "November", "December"],
 	        datasets: [
 	        	{
 		            label: ["Lucro"],
 		            backgroundColor: 'rgb(255, 99, 132)',
 		            borderColor: 'rgb(255, 99, 132)',
-		            data: [0, 10, 5, 2, 20, 30, 45],
+		            data: [32, 10, 5, 2, 20, 30, 45, 2, 20, 30, 45,33],
 	        	},
 	        	{
 		            label: ["Despesa"],
 		            backgroundColor: 'rgb(143, 31, 32)',
 		            borderColor: 'rgb(255, 99, 132)',
-		            data: [0, 10, 5, 2, 20, 30, 45],
+		            data: [31, 10, 5, 2, 20, 30, 45, 2, 20, 30, 45,33],
 	        	},
 	        ]
 	    },

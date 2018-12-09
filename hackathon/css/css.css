@@ -7,4 +7,20 @@
 .button-txt 
 {
     font-size: 2em;
+    color: white;
+}
+
+a:hover { 
+    color: white;
+}
+
+.button-relatorio
+{ 
+    margin-top: 4em;
+    
+}
+
+.selectRelatorio
+{
+	margin-top: 4em;
 }

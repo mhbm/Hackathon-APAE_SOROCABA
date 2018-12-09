@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="../../css/css.css">
     <title>Hackathon - APAE Sorocaba</title>
   </head>
   <body>
@@ -20,7 +20,7 @@
 
     <div class="container">
           <?php
- $con=mysqli_connect("localhost","root","","hackathon_apae");
+ $con=mysqli_connect("localhost","root","usbw","hackathon_apae");
 
  // Check connection
 if (mysqli_connect_errno())
@@ -70,8 +70,28 @@ if (mysqli_connect_errno())
       $sqlInsert = 'insert into gasto(data, descricao, valor, idSetor) values ("' . $data . '", "' . $descricao . '", "' . $valor . '", "' . $tipoSetor . '")';
 
       if ($con->query($sqlInsert) === TRUE) {
-        //Colocar imagem da APAE e colocar os botoes
         echo '<h2 class="text-center">Relatório de Gasto inserido com sucesso</h2>';
+        echo '<div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <img src = "../../img/apae.png" alt = "Logo APAE Sorocaba" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <button type="button" class="btn btn-secondary btn-lg btn-block btn btn-info button-relatorio">
+            <a class="button-txt" href="../Relatorio/inserirRelatorio.html">Inserir novo Relatório</a>
+          </button>
+        </div>
+      
+        <div class="col-md-6 text-center">
+          <button type="button" class="btn btn-secondary btn-lg btn-block btn btn-info button-relatorio">
+           <a class="button-txt" href="visualizarRelatorio.html">Visualizar Relatório</span>
+          </button>
+        </div>
+      </div>
+    </div>';
+        
       } else {
         echo "Error: " . $sqlInsert . "<br>" . $con->error;
       }

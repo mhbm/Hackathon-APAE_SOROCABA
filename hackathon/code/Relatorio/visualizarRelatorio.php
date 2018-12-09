@@ -26,18 +26,112 @@
         <div class="col-md-4">
           <div class="row">
             <div class="col-md-12 selectRelatorio">
+
               <div class="form-group"> <!-- Name field -->
-                <label class="control-label " for="tipoSetor">Tipo de setor</label>
-                <select class="form-control" name="tipoSetor">
-                  <option value="saude">Saúde</option>
-                  <option value="assistencia">Assistência</option>
-                  <option value="educacao">Educação</option>
-                  <option value="evento">Evento</option>
-                  <option value="todos">Todos</option>
-                </select>     
+                <form action="" method="POST">
+                  
+                  <label class="control-label " for="tipoSetor">Tipo de setor</label>
+                  <select class="form-control" name="tipoSetor" onchange="this.form.submit()">
+                    <?php
+                       if ($_POST['tipoSetor'] == 'saude') {
+                          echo '<option value="saude" selected="selected">Saúde</option>';
+                          echo '<option value="assistencia">Assistência</option>';
+                          echo '<option value="educacao">Educação</option>';
+                          echo '<option value="evento">Evento</option>';
+                          echo '<option value="todos">Todos</option>';
+                       } else if ($_POST['tipoSetor'] == 'assistencia') {
+                          echo '<option value="saude">Saúde</option>';
+                          echo '<option value="assistencia" selected="selected">Assistência</option>';
+                          echo '<option value="educacao">Educação</option>';
+                          echo '<option value="evento">Evento</option>';
+                          echo '<option value="todos">Todos</option>';
+                       } else if ($_POST['tipoSetor'] == 'educacao') {
+                          echo '<option value="saude">Saúde</option>';
+                          echo '<option value="assistencia">Assistência</option>';
+                          echo '<option value="educacao" selected="selected">Educação</option>';
+                          echo '<option value="evento">Evento</option>';
+                          echo '<option value="todos">Todos</option>';
+                       } else if ($_POST['tipoSetor'] == 'evento') {
+                          echo '<option value="saude">Saúde</option>';
+                          echo '<option value="assistencia">Assistência</option>';
+                          echo '<option value="educacao">Educação</option>';
+                          echo '<option value="evento" selected="selected">Evento</option>';
+                          echo '<option value="todos">Todos</option>';
+                       } else if ($_POST['tipoSetor'] == 'todos') {
+                          echo '<option value="saude">Saúde</option>';
+                          echo '<option value="assistencia">Assistência</option>';
+                          echo '<option value="educacao">Educação</option>';
+                          echo '<option value="evento">Evento</option>';
+                          echo '<option value="todos" selected="selected">Todos</option>';
+                       } else {
+                        echo '<option value="saude">Saúde</option>';
+                          echo '<option value="assistencia">Assistência</option>';
+                          echo '<option value="educacao">Educação</option>';
+                          echo '<option value="evento">Evento</option>';
+                          echo '<option value="todos">Todos</option>';
+                       }
+                    ?>
+                    
+                  </select>     
+
+                </form>
               </div>
             </div>
           </div>
+          
+          <?php
+              if (isset($_POST["tipoSetor"])) {
+                $con=mysqli_connect("localhost","root","","hackathon_apae");
+
+                // Check connection
+                if (mysqli_connect_errno())
+                {
+                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                } else {
+                    $tipoSetor;
+
+                    //Checagem do tipo setor
+                    switch ($_POST["tipoSetor"]) {
+                      case 'educacao':
+                        # code...
+                        $tipoSetor = 4;
+                        break;
+
+                      case 'saude':
+                        # code...
+                        $tipoSetor = 2;
+                        break;
+
+                      case 'assistencia':
+                        # code...
+                        $tipoSetor = 3;
+                        break;
+                      
+                      default:
+                        # code...
+                        $tipoSetor = 5;
+                        break;
+                    }
+
+
+                    if ($_POST["tipoSetor"] == 'todos') {
+                        $query = "SELECT truncate(sum(valor),2) as total FROM gasto where data BETWEEN '2018-01-01' and '2018-01-31' ";
+                    } else {
+                        $query = "SELECT truncate(sum(valor),2) as total FROM gasto where data BETWEEN '2018-01-01' and '2018-01-31' and idSetor  = $tipoSetor ";
+                    }
+
+                    $result = $con->query($query);
+                    $arrayMesDados = [];
+                    while($dados = $result ->fetch_assoc() ) {
+                          //print_r(utf8_encode($dados["total"]));
+                          $arrayMesDados[] = $dados["total"];
+                    }
+
+                    print_r($arrayMesDados);
+              }
+            }
+    
+        ?>
           <!--
           <div class="row">
             <div class="col-md-12 selectRelatorio">
@@ -63,6 +157,9 @@
           </div>
           -->
         </div>
+
+
+
         <div class="col-md-8">
           <canvas id="myChart"></canvas>
         </div>
